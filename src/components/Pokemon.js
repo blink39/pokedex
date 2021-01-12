@@ -6,13 +6,14 @@ function Pokemon(props) {
     
     let localPokemonCounter = 0
     let localPokemon = JSON.parse(localStorage.getItem("myPokemon"))
-    let string = ''
-
-    const countingPokemon = localPokemon.map(data => {
-        if (data[0] === props.pokemon.name) {
-            localPokemonCounter += 1
-        }
-    })
+    
+    if (localPokemon) {
+        const countingPokemon = localPokemon.map(data => {
+            if (data[0] === props.pokemon.name) {
+                localPokemonCounter += 1
+            }
+        })
+    }
     
     const capitalizeFLetter = props.pokemon.name.charAt(0).toUpperCase() + props.pokemon.name.slice(1)
 

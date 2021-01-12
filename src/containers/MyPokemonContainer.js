@@ -4,11 +4,16 @@ import {Link} from 'react-router-dom'
 function MyPokemonContainer({match}) {
     
     let localPokemon = JSON.parse(localStorage.getItem("myPokemon"))
+    let currState = []
 
-    const [state, setState] = useState(localPokemon)
+    if (localPokemon) {
+        currState = localPokemon
+    }
+
+    const [state, setState] = useState(currState)
+
 
     function deletePokemon(pokemon, nickname) {
-        console.log(localPokemon)
         let indexDeleted = -1
         localPokemon.map((data, index) => {
             if (data[0] === pokemon && data[1] === nickname) {
